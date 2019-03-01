@@ -1,13 +1,26 @@
+<!-- Message Details-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Title</title>
+    <title>Message Details</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 </head>
 <body>
+
+    <h1>Message Details</h1>
+
+    <button href="/" type="button" class="btn btn-info">View All Messages</button>
+
+    <section class="container text-left">
+        Title : <span th:text="${basicBullhorn.title}"></span><br>
+        Content : <span th:text="${basicBullhorn.content}"></span><br>
+        Posted Date : <span th:text="${basicBullhorn.postedDate}"></span><br>
+        Posted By: <span th:text="${basicBullhorn.postedBy}"></span><br>
+        <a th:href="@{/delete/{id}(id=${basicBullhorn.id})}">Delete this message</a>
+    </section>
 
 </body>
 </html>
