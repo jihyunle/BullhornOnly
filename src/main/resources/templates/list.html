@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>View All Messages</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+</head>
+<body>
+
+    <div class="text-align"></div>
+    <a href="/add">Post a new message</a><br>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Posted Date</th>
+            <th>Posted By</th> <!-- Add a picture of the person here-->
+        </tr>
+        <tr th:each="basicBullhorn : ${basicBullhorns}}">
+            <td th:text="${basicBullhorn.title}"></td>
+            <td th:text="${basicBullhorn.content}"></td>
+            <td th:text="${basicBullhorn.postedDate}"></td>
+            <td th:text="${basicBullhorn.postedBy}"></td>
+            <td>
+                <a th:href="@{/update/{id}(id=${basicBullhorn.id})}">Update</a>
+                <a th:href="@{/detail/{id}(id=${basicBullhorn.id})}">Details</a>
+                <a th:href="@{/delete/{id}(id=${basicBullhorn.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
