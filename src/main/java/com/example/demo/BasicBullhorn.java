@@ -22,7 +22,7 @@ public class BasicBullhorn {
     public String content;
 
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "mm/dd/yy")
+    @DateTimeFormat(pattern = "MM-dd-YY")
     private Date postedDate;
 
     @NotNull
@@ -31,6 +31,12 @@ public class BasicBullhorn {
 
     public BasicBullhorn(){
 
+    }
+
+    public BasicBullhorn(@NotNull @Size(min = 3) String title, @NotNull @Size(min = 10) String content, @NotNull @Size(min = 2) String postedBy) {
+        this.title = title;
+        this.content = content;
+        this.postedBy = postedBy;
     }
 
     public long getId() {

@@ -4,23 +4,38 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Message Details</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <title>Message Details</title>
+    <th:block th:insert="base :: header"></th:block>
+
 </head>
 <body>
 
-    <h1>Message Details</h1>
+    <div class="container text-left">
+        <h1>Message Details</h1>
+    </div>
 
-    <button href="/" type="button" class="btn btn-info">View All Messages</button>
+    <!--<a href="/" class="btn btn-info">View All Messages</a><br>-->
 
     <section class="container text-left">
-        Title : <span th:text="${basicBullhorn.title}"></span><br>
-        Content : <span th:text="${basicBullhorn.content}"></span><br>
-        Posted Date : <span th:text="${basicBullhorn.postedDate}"></span><br>
-        Posted By: <span th:text="${basicBullhorn.postedBy}"></span><br>
-        <a th:href="@{/delete/{id}(id=${basicBullhorn.id})}">Delete this message</a>
+        <strong>Title :</strong> <span th:text="${basicBullhorn.title}"></span><p></p>
+        <strong>Content :</strong> <br><span th:text="${basicBullhorn.content}"></span><p></p>
+        <strong>Posted Date :</strong> <span th:text="${#dates.format(basicBullhorn.postedDate, 'MM-dd-YY')}"></span><p></p>
+        <strong>Posted By:</strong> <span th:text="${basicBullhorn.postedBy}"></span><p></p>
+
+        <a th:href="@{/delete/{id}(id=${basicBullhorn.id})}">Delete this message</a><p></p>
     </section>
+
+
+    <!-- Footer stuff -->
+    <span th:replace="base :: jslinks"></span>
 
 </body>
 </html>
