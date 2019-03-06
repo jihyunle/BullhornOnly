@@ -11,15 +11,15 @@ import java.util.Date;
 public class BasicBullhorn {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public long id;
+    private long id;
 
     @NotNull
     @Size(min = 3)
-    public String title;
+    private String title;
 
     @NotNull
     @Size(min = 10)
-    public String content;
+    private String content;
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "MM-dd-YY")
@@ -27,7 +27,7 @@ public class BasicBullhorn {
 
     @NotNull
     @Size(min = 2)
-    public String postedBy;
+    private String postedBy;
 
     public BasicBullhorn(){
 
