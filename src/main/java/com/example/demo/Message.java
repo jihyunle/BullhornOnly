@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-public class BasicBullhorn {
+public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -29,11 +29,13 @@ public class BasicBullhorn {
     @Size(min = 2)
     private String postedBy;
 
-    public BasicBullhorn(){
+    private String messagePic;
+
+    public Message(){
 
     }
 
-    public BasicBullhorn(@NotNull @Size(min = 3) String title, @NotNull @Size(min = 10) String content, @NotNull @Size(min = 2) String postedBy) {
+    public Message(@NotNull @Size(min = 3) String title, @NotNull @Size(min = 10) String content, @NotNull @Size(min = 2) String postedBy) {
         this.title = title;
         this.content = content;
         this.postedBy = postedBy;
@@ -78,4 +80,13 @@ public class BasicBullhorn {
     public void setPostedBy(String postedBy) {
         this.postedBy = postedBy;
     }
+
+    public String getMessagePic() {
+        return messagePic;
+    }
+
+    public void setMessagePic(String messagePic) {
+        this.messagePic = messagePic;
+    }
+
 }

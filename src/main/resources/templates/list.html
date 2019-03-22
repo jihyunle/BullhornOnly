@@ -26,15 +26,15 @@
                 <th>Posted Date</th>
                 <th>Posted By</th> <!-- Add a picture of the person here-->
             </tr>
-            <tr th:each="basicBullhorn : ${basicBullhorns}">
-                <td th:text="${basicBullhorn.title}"></td>
-                <td th:text="${basicBullhorn.content}"></td>
-                <td th:text="${basicBullhorn.postedDate}"></td>
-                <td th:text="${basicBullhorn.postedBy}"></td>
+            <tr th:each="message : ${messages}">
+                <td th:text="${message.title}"></td>
+                <td th:text="${message.content}"></td>
+                <td th:text="${message.postedDate}"></td>
+                <td th:text="${message.postedBy}"></td>
                 <td>
-                    <a th:href="@{/update/{id}(id=${basicBullhorn.id})}">Update</a>
-                    <a th:href="@{/detail/{id}(id=${basicBullhorn.id})}">Details</a>
-                    <a th:href="@{/delete/{id}(id=${basicBullhorn.id})}">Delete</a>
+                    <a th:href="@{/update/{id}(id=${message.id})}">Update</a>
+                    <a th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+                    <a th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
                 </td>
             </tr>
         </table>

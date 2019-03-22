@@ -27,12 +27,12 @@
     <!--<a href="/" class="btn btn-info">View All Messages</a><br>-->
 
     <section class="container text-left">
-        <strong>Title :</strong> <span th:text="${basicBullhorn.title}"></span><p></p>
-        <strong>Content :</strong> <br><span th:text="${basicBullhorn.content}"></span><p></p>
-        <strong>Posted Date :</strong> <span th:text="${#dates.format(basicBullhorn.postedDate, 'MM-dd-YY')}"></span><p></p>
-        <strong>Posted By:</strong> <span th:text="${basicBullhorn.postedBy}"></span><p></p>
+        <strong>Title :</strong> <span th:text="${message.title}"></span><p></p>
+        <strong>Content :</strong> <br><span th:text="${message.content}"></span><p></p>
+        <strong>Posted Date :</strong> <span th:text="${#dates.format(message.postedDate, 'MM-dd-YY')}"></span><p></p>
+        <strong>Posted By:</strong> <span th:text="${message.postedBy}"></span><p></p>
 
-        <a th:href="@{/delete/{id}(id=${basicBullhorn.id})}">Delete this message</a><p></p>
+        <a th:href="@{/delete/{id}(id=${message.id})}">Delete this message</a><p></p>
     </section>
 
 
