@@ -1,58 +1,51 @@
 <!-- Messages -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8"/>
     <title>View All Messages</title>
-    <th:block th:insert="base :: header"></th:block>
+    <th:block th:replace="~{base :: header}"></th:block>
 </head>
-
 <body>
-    <!-- Jumbotron with blurb -->
-    <div th:replace="base :: jumbo"></div>
-
-    <!-- Random link -->
-    <div class=" container center">
-    <a href="https://www.textrequest.com/blog/how-many-texts-people-send-per-day/" target="_blank" class="btn btn-primary">How millenial are you?</a>
-    <p></p>
-    </div>
+    <div th:insert="~{base :: nav}"></div>
 
     <!-- Database-->
-    <div class="container center" width="960px">
+    <div class="container">
         <table>
-            <tr>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Posted Date</th>
-                <th>Posted By</th> <!-- Add a picture of the person here-->
-            </tr>
-            <tr th:each="message : ${messages}">
-                <td th:text="${message.title}"></td>
-                <td th:text="${message.content}"></td>
-                <td th:text="${message.postedDate}"></td>
-                <td th:text="${message.postedBy}"></td>
-                <td>
-                    <a th:href="@{/update/{id}(id=${message.id})}">Update</a>
-                    <a th:href="@{/detail/{id}(id=${message.id})}">Details</a>
-                    <a th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Posted Date</th>
+                    <th>Posted By</th> <!-- Add a picture of the person here-->
+                    <th>Picture</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="message : ${messages}">
+                    <td th:text="${message.title}"></td>
+                    <td th:text="${message.content}"></td>
+                    <td th:text="${message.postedDate}"></td>
+                    <td th:text="${message.postedBy}"></td>
+                    <td>
+                        <img th:src="${message.messagePic == null}?'':${message.messagePic}" />
+                    </td>
+                    <td>
+                        <a th:href="@{/update/{id}(id=${message.id})}">Update</a>
+                        <a th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+                        <a th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
-    <!-- Footer stuff -->
-    <span th:replace="base :: jslinks"></span>
 
-
-    <script>
-    //  Jquery for smooth scrolling
-    $('.nav-link, .navbar-brand, .new-button').click(function () {
-    var sectionTo = $(this).attr('href');
-    $('html, body').animate({
-    scrollTop: $(sectionTo).offset().top
-    }, 1500);
-    });
-    </script>
+    <!-- Footer -->
+    <div th:replace="base :: footer"></div>
+    <!-- JS Links -->
+    <div th:replace="base :: jslinks"></div>
 
 </body>
 </html>

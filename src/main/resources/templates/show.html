@@ -1,43 +1,40 @@
 <!-- Message Details-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <title>Message Details</title>
+    <th:block th:replace="~{base :: header}"></th:block>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
     <!-- My CSS -->
     <link rel="stylesheet" type="text/css" href="main.css">
 
-    <title>Message Details</title>
-    <th:block th:insert="base :: header"></th:block>
-
 </head>
 <body>
 
-    <div class="container text-left">
-        <h1>Message Details</h1>
+    <div th:insert="~{base :: nav}"></div>
+
+    <div class="container-fluid">
+        <p><h3>Message Details</h3></p>
+        <div class="text-left">
+            <strong>Title :</strong><span th:text="${message.title}"></span><br />
+            <strong>Content :</strong><br /><span th:text="${message.content}"></span><br />
+            <strong>Posted Date :</strong><span th:text="${#dates.format(message.postedDate, 'MM-dd-YY')}"></span><br />
+            <strong>Posted By :</strong><span th:text="${message.postedBy}"></span><br />
+            <strong>Picture :</strong>
+                <img th:src="${message.messagePic}" alt="message pic" /><br />
+
+            <a th:href="@{/delete/{id}(id=${message.id})}">Delete this message</a><p></p>
+
+        </div>
     </div>
 
-    <p></p>
 
-    <!--<a href="/" class="btn btn-info">View All Messages</a><br>-->
-
-    <section class="container text-left">
-        <strong>Title :</strong> <span th:text="${message.title}"></span><p></p>
-        <strong>Content :</strong> <br><span th:text="${message.content}"></span><p></p>
-        <strong>Posted Date :</strong> <span th:text="${#dates.format(message.postedDate, 'MM-dd-YY')}"></span><p></p>
-        <strong>Posted By:</strong> <span th:text="${message.postedBy}"></span><p></p>
-
-        <a th:href="@{/delete/{id}(id=${message.id})}">Delete this message</a><p></p>
-    </section>
-
-
-    <!-- Footer stuff -->
-    <span th:replace="base :: jslinks"></span>
+    <!-- Footer -->
+    <div th:replace="base :: footer"></div>
+    <!-- JS Links -->
+    <div th:replace="base :: jslinks"></div>
 
 </body>
 </html>

@@ -25,14 +25,14 @@ public class HomeController {
     /* lists all message entries*/
     @RequestMapping("/")
     public String listMessage(Model model){
-        model.addAttribute("bullhorns", messageRepository.findAll());
+        model.addAttribute("messages", messageRepository.findAll());
         return "list";
     }
 
     /* allows user to post a new message*/
     @GetMapping("/add")
     public String messageForm(Model model){
-        model.addAttribute("bullhorn", new Message());
+        model.addAttribute("message", new Message());
         return "form";
     }
 
